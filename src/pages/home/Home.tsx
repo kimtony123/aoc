@@ -201,7 +201,7 @@ function Home() {
           <div className="ml-5 relative w-full lg:w-4/5 md:m-0 flex p-5 lg:p-0 justify-center">
             <iframe
               className="rounded-lg h-48 w-4/5 md:h-72 md:w-3/4"
-              src="https://www.youtube.com/watch?v=-XWz3XJ6urg"
+              src="https://www.youtube.com/embed/RJwDpYmiQ8s"
               title="Learn what is aoclimaOptions."
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
