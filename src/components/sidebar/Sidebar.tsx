@@ -1,13 +1,11 @@
 import "./Sidebar.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaWallet, FaTrophy } from "react-icons/fa";
+import { FaWallet, FaTrophy, FaGift } from "react-icons/fa";
 import {
   Squares2X2Icon,
   ChartBarIcon,
   HomeIcon,
-  ArrowLeftIcon,
-  ArrowRightIcon,
   SunIcon,
   MoonIcon,
 } from "@heroicons/react/24/outline";
@@ -27,7 +25,6 @@ const Sidebar: React.FC<SidebarBarProps> = ({
   activeIndex,
   updateActiveIndex,
 }) => {
-  // const [activeIndex, setActiveIndex] = useState(0);
   const [isCollapsed, setIsCollapsed] = useState(true);
   const navigate = useNavigate();
 
@@ -41,6 +38,13 @@ const Sidebar: React.FC<SidebarBarProps> = ({
     document.documentElement.classList.remove("dark", "light");
     document.documentElement.classList.add(newTheme);
     localStorage.setItem("theme", newTheme);
+
+    // Set background color based on the theme
+    if (newTheme === "dark") {
+      document.body.style.backgroundColor = "#000000"; // Extreme black
+    } else {
+      document.body.style.backgroundColor = "#ffffff"; // Extreme white
+    }
   };
 
   const menuItems = [
@@ -49,6 +53,7 @@ const Sidebar: React.FC<SidebarBarProps> = ({
     { icon: <ChartBarIcon className="size-5" />, tooltip: "Analysis" },
     { icon: <FaWallet size="20" />, tooltip: "Wallet" },
     { icon: <FaTrophy size="20" />, tooltip: "LeaderBoard" },
+    { icon: <FaGift size="20" />, tooltip: "RewardPage" },
   ];
 
   return (
@@ -66,13 +71,6 @@ const Sidebar: React.FC<SidebarBarProps> = ({
       <div>
         <div className="pt-4 pb-4 pl-3 pr-3 flex items-center justify-center">
           <img className="logo" src="Aco-logo.svg" alt="ACO logo" />
-
-          {/* <button onClick={handleCollapseToggle} className="p-2">
-                        {isCollapsed ?
-                            <ArrowRightIcon className='size-5 text-white ' /> :
-                            <ArrowLeftIcon className='size-5 text-red' />
-                        }
-                    </button> */}
         </div>
         <div className="flex-grow flex flex-col items-center space-y-2">
           {menuItems.map((item, index) => (
@@ -96,7 +94,7 @@ const Sidebar: React.FC<SidebarBarProps> = ({
       </div>
       <div>
         <div className="p-5 flex items-center justify-center">
-          {/* Add lightmode dark mode toggle shitch here */}
+          {/* Add lightmode dark mode toggle switch */}
           <button
             onClick={toggleTheme}
             className="flex items-center justify-center p-2 bg-neutral-700 text-white rounded-full transition-colors duration-300"
@@ -122,29 +120,6 @@ interface SidebarIconProps {
   onClick: () => void;
 }
 
-// const SidebarIcon: React.FC<SidebarIconProps> = ({ icon, tooltip, isActive, isCollapsed, onClick }) => (
-//     <div
-//         onClick={onClick}
-//         className={classNames(
-//             "sidebar-icon group relative flex items-center justify-center w-full p-2 transition-colors duration-300 cursor-pointer",
-//             {
-//                 'bg-gray-700': isActive,
-//                 'hover:bg-gray-700': !isActive,
-//             }
-//         )}
-//     >
-//         {icon}
-//         {!isCollapsed && (
-//             <span className="ml-4">{tooltip}</span>
-//         )}
-//         {isCollapsed && (
-//             <div className="absolute left-full top-1/2 transform -translate-y-1/2 bg-gray-700 text-white text-xs rounded-lg px-2 py-1 whitespace-nowrap shadow-lg">
-//                 {tooltip}
-//             </div>
-//         )}
-//     </div>
-// );
-
 const SidebarIcon: React.FC<SidebarIconProps> = ({
   icon,
   tooltip,
@@ -156,7 +131,7 @@ const SidebarIcon: React.FC<SidebarIconProps> = ({
   <div
     onClick={onClick}
     className={classNames(
-      "sidebar-icon group relative flex items-center justify-center rounded-lg w-full_ p-3 transition-colors duration-300 cursor-pointer",
+      "sidebar-icon group relative flex items-center justify-center rounded-lg w-full p-3 transition-colors duration-300 cursor-pointer",
       {
         "bg-neutral-700": isActive && theme === "dark",
         "bg-neutral-500": isActive && theme === "light",

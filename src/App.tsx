@@ -12,6 +12,7 @@ import WalletPage from "./pages/wallet/WalletPage";
 import TradesAnalysisPage from "./pages/trades/TradesAnalysisPage";
 import WalletConnectError from "./components/alerts/WalletConnectError";
 import LeaderBoard from "./pages/leaderboard/leader";
+import Rewardpage from "./pages/rewardpage/rewardpage";
 
 const App: React.FC = () => {
   const [theme, setTheme] = useState("");
@@ -84,6 +85,10 @@ const App: React.FC = () => {
             <Route
               path="leaderboard"
               element={walletAddress ? <LeaderBoard /> : <WalletConnectError />}
+            />
+            <Route
+              path="rewardpage"
+              element={walletAddress ? <Rewardpage /> : <WalletConnectError />}
             />
           </Routes>
         </div>
