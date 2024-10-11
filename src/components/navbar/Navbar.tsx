@@ -133,7 +133,7 @@ const Navbar: React.FC<{ theme: string }> = ({ theme }) => {
             {isSigningIn ? (
               <FaSpinner className="animate-spin" /> // Show spinner while signing in
             ) : (
-              "Sign In Via Email"
+              "Sign In Via Google"
             )}
           </button>
         )}

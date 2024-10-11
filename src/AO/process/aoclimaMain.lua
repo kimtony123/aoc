@@ -293,6 +293,25 @@ function tableToJson(tbl)
 end
 
 
+function ClearClosedTrades(userId)
+    -- Table to store trades that the user can clear
+    local userTrades = {}
+
+    for tradeId, trade in pairs(closedTrades) do
+        if trade.UserId == userId then
+            userTrades[tradeId] = trade
+            ArchivedTrades[tradeId] = trade
+        end
+    end
+
+    -- Remove cleared trades from closedTrades
+    for tradeId in pairs(userTrades) do
+        closedTrades[tradeId] = nil
+    end
+
+    print("Archived closed trades for user: " .. tostring(userId))
+end
+
 -- Function to get the current time in milliseconds
 function getCurrentTime(msg)
     return msg.Timestamp -- returns time in milliseconds

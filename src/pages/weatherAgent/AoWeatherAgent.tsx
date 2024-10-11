@@ -74,7 +74,7 @@ const fetchHistoricalData = async (latitude: number, longitude: number) => {
 
 const AoWeatherAgent: React.FC = () => {
   const NOT = "kN2oP4VDhAVn-7ZuVBTvWvWfD4fLZ5OK_yLCnaFUBNY";
-  const AOC = "6XvODi4DHKQh1ebBugfyVIXuaHUE5SKEaK1-JbhkMfs";
+  const AOC = "ga5QHk3FOfKf4YoEQxQSuZDgL5Z4Rjbswk3ASg2CeQE";
   const USDA = "GcFxqTQnKHcr304qnOcq00ZqbaYGDn4Wbb0DHAM-wvU";
 
   const [lat, setLat] = useState<number | null>(40.7128);

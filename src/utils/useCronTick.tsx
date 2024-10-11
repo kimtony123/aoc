@@ -40,7 +40,7 @@ const useCronTick = (process: string) => {
     };
 
     // Execute the actions sequentially every 100 seconds (adjust if needed)
-    const intervalId = setInterval(performCronActions, 1000000);
+    const intervalId = setInterval(performCronActions, 60000);
 
     return () => clearInterval(intervalId);
   }, [process]);
