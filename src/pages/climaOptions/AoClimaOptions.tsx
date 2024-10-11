@@ -27,6 +27,7 @@ ChartJS.register(
   TimeScale
 );
 import "chartjs-adapter-date-fns";
+import { FaSpinner } from "react-icons/fa"; // Import the spinner icon
 
 import Select, { ActionMeta, MultiValue, SingleValue } from "react-select";
 
@@ -593,23 +594,33 @@ const AoClimaOptions: React.FC = () => {
                   id="amount"
                   className="w-full block rounded-md border-0 py-1.5 pl-7 text-white ring-1 ring-inset ring-gray-300 
                                 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  placeholder="USDA Amount"
+                  placeholder="AOC Amount"
                   value={betAmount}
                   onChange={handleInputChange}
                 ></input>
               </div>
               <div className="flex space-x-3 justify-center text-xs md:text-sm">
                 <button
-                  className="w-1/2 bg-green-500 text-white  p-1 md:p-2 rounded-md opacity-80 hover:opacity-100"
+                  className="top-3 w-1/2 left-3 bg-green-500 text-white lg:text-sm px-3 py-2 rounded-md opacity-80 hover:opacity-100"
                   onClick={() => trade("Call")}
+                  disabled={isTradeLoading}
                 >
-                  Buy Higher
+                  {isTradeLoading ? (
+                    <FaSpinner className="animate-spin" />
+                  ) : (
+                    "Buy Higher"
+                  )}
                 </button>
                 <button
-                  className="w-1/2 bg-red-500 text-white p-1 md:p-2 rounded-md opacity-80 hover:opacity-100"
+                  className="top-3 w-1/2 left-20 bg-red-500 text-white lg:text-sm px-3 py-2 rounded-md opacity-80 hover:opacity-100"
                   onClick={() => trade("Put")}
+                  disabled={isTradeLoading}
                 >
-                  Buy Lower
+                  {isTradeLoading ? (
+                    <FaSpinner className="animate-spin" />
+                  ) : (
+                    "Buy Lower"
+                  )}
                 </button>
               </div>
             </div>
